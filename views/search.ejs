@@ -1,0 +1,43 @@
+<% include template/header %>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script  type="text/javascript" src="typeahead.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input.typeahead').typeahead({
+            name: 'typeahead',
+            remote: 'http://localhost:1337/search?key=%QUERY',
+            limit: 10
+        });
+    });
+</script>
+<table width="80%" height="70%" align="center" cellspacing="0" cellpadding="10" border="1" bgcolor="white">
+    <tr><td valign = "top">
+        <br><h3>Search by medicine name</h3><br>
+        <div vertical-align="top">
+        <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Type your Query"></div></td>
+        <td>
+        <table width="80%" height="80%" border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Indication</th>
+            <th>Generic</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <% medicineList.forEach(function(medicine){ %>
+        <tr>
+            <td><%= medicine.id %></td>
+            <td><%= medicine.med_name %></td>
+            <td><%= medicine.indication %></td>
+            <td><%= medicine.generic %></td>
+            <td><%= medicine.price %></td>
+            <td><%= medicine.quantity %></td>
+        </tr>
+        <% }) %>
+        <?php }
+         ?>
+        </table>
+    </td></tr>
+</table>
+<% include template/footer %>

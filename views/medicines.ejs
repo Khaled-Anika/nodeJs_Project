@@ -1,0 +1,44 @@
+<% include template/admin_header %>
+<% include template/admin_interface %>
+    <td>
+    	<fieldset>
+	    <legend><b>Medicine List</b></legend>
+		<form method="post">
+			        <br/> 
+        <table width="90%" height="90%" border="1" cellspacing="0" cellpadding="5">
+	        <tr>
+	            <th>Id</th>
+	            <th>Name</th>
+	            <th>Indication</th>
+	            <th>Generic</th>
+	            <th>Price</th>
+	            <th>Quantity</th>
+	            <th colspan="4"></th>
+	        </tr>
+	         <% if(data.length){ 
+                                
+                 for(var i = 0;i < data.length;i++) { %>                 
+                <tr>
+                    <td><%=(i+1)%></td>
+                    <td><%=data[i].med_name%></td>
+                    <td><%=data[i].indication%></td>
+                    <td><%=data[i].generic%></td>
+                    <td><%=data[i].price%></td>
+                    <td><%=data[i].quantity%></td>
+                    <td>
+                        <a href="../medicines/edit/<%=data[i].id%>">Edit</a>                       
+                        &nbsp;&nbsp;<a href="../medicines/delete/<%=data[i].id%>" onclick="return confirm('Are you sure?')">Delete</a>                       
+                    </td>
+                </tr>
+            <% }
+            
+             }else{ %>
+                 <tr>
+                    <td colspan="3">No medicine</td>
+                 </tr>
+            <% } %>
+        </table>
+	   </form>
+	</fieldset>
+    </td>
+<% include template/footer %>

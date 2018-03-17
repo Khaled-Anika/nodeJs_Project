@@ -1,0 +1,58 @@
+<% include template/admin_header %>
+<table width="80%" height = "100%" align="center" cellspacing="5" cellpadding="10" border="1" bgcolor="white">
+ <tr>
+        <td width="200" valign="top">
+            <font size="4">
+            <ul>
+            <li><a href="admin_home" target="contentFrame">Dashboard</a></li><br>
+            <li><a href="add_medicine" target="contentFrame"><label>Add Medicines</label></a></li><br>
+            <li><a href="medicines" target="contentFrame"><label>Retrieve Medicines</label></a></li><br>
+        <li><a href="../app/donor_info.php" target="contentFrame"><label>Donor Informations</label></a></li>
+
+            </ul>
+        </font>
+        </td>
+        <td>
+            <table width="80%" height="70%" align="center" cellspacing="0" cellpadding="10" border="1" bgcolor="white">
+                <tr><td>
+                <fieldset>
+                    <legend>UPDATE</legend>
+                    <form method="post" action="/medicines/edit/<%=data[0].id%>">
+                        <table border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td>Medicine Name</td>
+                                <td><input name="med_name" value="<%= data[0].med_name %>"/></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Indication</td>
+                                <td><input name="indication" value="<%= data[0].indication %>"/></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Generic</td>
+                                <td><input name="generic" value="<%= data[0].generic %>"/></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td><input name="price" value="<%= data[0].price %>"/></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Quantity</td>
+                                <td><input name="quantity" value="<%= data[0].quantity %>"/></td>
+                                
+                            </tr>
+                        </table>
+                        <hr/>
+                        &nbsp; <input type="submit" name="submit" value="Save">
+                        <input type="button" name="cancel" value="Cancel" class="cancel" onclick="return confirm('Are you sure?')">
+                    </form>
+                </fieldset>
+                </td></tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<% include template/footer %>

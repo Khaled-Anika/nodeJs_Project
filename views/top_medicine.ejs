@@ -1,0 +1,37 @@
+<% include template/admin_header %>
+<% include template/admin_interface %>
+    <td>
+    <form method="post">
+    		
+		<h2>Top medicine according to number of sold unit is: </h2>
+
+		<table width="90%" height="20%" border="1" cellspacing="3" cellpadding="15" valign="top">
+			<tr>
+				<th>Id</th>
+				<th>Medicine Name</th>
+			</tr>
+			<tr>
+				<td>     <%= (0+1) %> </td>
+				<td><i>  <%= data[0].med_name %> </i></td>
+			</tr>
+ 		</table><br><br>
+        <table width="90%" height="90%" border="1" cellspacing="0" cellpadding="5" valign="top">
+			<tr>
+				<th>Id</th>
+				<th>username</th>
+				<th>Medicine Name</th>
+				<th>Unit Sold</th>
+			</tr>
+
+			<% for(var i = 0;i < data.length;i++) { %>
+			<tr>
+				<td> <%= (i+1) %> </td>
+				<td> <%= data[i].username %> </td>
+				<td> <%= data[i].med_name %> </td>
+				<td> <%= data[i].buy_count %> </td>
+			</tr>
+			<% } %>
+		</table>
+ 	</form>
+    </td>
+<% include template/footer %>

@@ -5,11 +5,11 @@ var router = express.Router();
 var userloginModel = require.main.require('./models/user-login-model');
 
 // Request Handler
-router.get('/index', function(req, res,next){
-	res.render('login/index',{msg: []});
+router.get('/', function(req, res,next){
+	res.render('login',{msg: []});
 });
 
-router.post('/index', function(req, res){
+router.post('/', function(req, res){
 
 	var user = {
 		username: req.body.username,
@@ -21,17 +21,17 @@ router.post('/index', function(req, res){
 		{
 			if(user.password === '123'){
 				req.session.loggedUser = user;
-				res.render('admin_home/index');
+				res.redirect('/admin_home');
 			}
 			else
 			{
 				req.session.loggedUser = user;
-				res.render('user_home/index');
+				res.redirect('/user_home');
 			}
 		}
 		else
 		{
-			res.render('login/index', {msg: 'invalid username or password'});
+			res.render('login', {msg: 'invalid username or password'});
 		}
 	});
 	

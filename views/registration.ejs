@@ -1,8 +1,18 @@
-<fieldset>
-    <legend><b>REGISTRATION</b></legend>
+<% include template/header %>
     <form method="post">
-        <br/>
-        <table width="100%" cellpadding="0" cellspacing="0">
+        <table width="80%" height="50%" align="center" cellspacing="0" cellpadding="10" border="1" bgcolor="white">
+            <tr><td>
+        <table align="center" border="0" cellpadding="0" cellspacing="10" width="70%" height="20%">
+            <fieldset>
+                <ul align="center">
+                    <% for(var i = 0; i < errs.length; i++){ %>
+                        <li><%= errs[i].msg %></li>
+                    <% } %>
+                </ul>
+            </fieldset>
+            <tr>
+                <td height="90" colspan="4"><b>REGISTRATION:</b></td>
+            </tr>
             <tr>
                 <td width="130"></td>
                 <td width="10"></td>
@@ -29,7 +39,7 @@
             <tr>
                 <td>User Name</td>
                 <td>:</td>
-                <td><input name="userName" type="text"></td>
+                <td><input name="username" type="text"></td>
                 <td></td>
             </tr>       
             <tr><td colspan="4"><hr/></td></tr>
@@ -86,15 +96,15 @@
                 </td>
                 <td></td>
             </tr>
+            <tr><td colspan="4"><hr/></td></tr>
+            <tr>
+                <td colspan="4">
+                    <input type="submit" value="Submit">
+                    <input type="reset"></br><br><a href="regAs.html">Back</a>
+                </td>
+            </tr>
         </table>
-        <hr/>
-        <input type="submit" value="Submit">
-        <input type="reset">
+</td></tr>
+</table>
     </form>
-    <ul>
-    <% for(var i = 0; i < errs.length; i++){ %>
-        <li><%= errs[i].message %></li>
-    <% } %>
-    </ul>
-</fieldset>
-<a href="regAs.html">Back</a>
+<% include template/footer %>

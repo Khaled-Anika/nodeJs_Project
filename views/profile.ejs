@@ -1,0 +1,89 @@
+<% include template/user_header %>
+<table width="80%" height = "100%" align="center" cellspacing="1" cellpadding="10" border="1" bgcolor="white">
+ <tr>
+    <td width="200" valign="top">
+    	<font size="4">
+    	<ul>
+    	<li><a href="../medical_news.html" target="contentFrame"><label>Medical News</label></a></li><br>
+        <li><a href="medicine_list_buy" target="contentFrame"><label>Medicine List</label></a></li><br>
+        <li><a href="../healthTips.html" target="contentFrame"><label>Health Tips</label></a></li><br>
+        <li><a href="../Black_Listed_Medicines.html" target="contentFrame"><label>Black Listed Drugs</label></a></li><br>
+        <li><a href="../Blood_Bank.html" target="contentFrame"><label>Blood Bank</label></a></li><br>
+        <li><a href="other_products.html" target="contentFrame"><label>Other Products</label></a></li>
+    	</ul>
+    </font>
+    </td>
+    <td>
+    	<fieldset>
+	    <legend><b>PROFILE</b></legend>
+	    <form method="POST">
+	        <br/>
+	        <table width="100%" cellpadding="0" cellspacing="0">
+	            <tr>
+	                <td width="130"></td>
+	                <td width="10"></td>
+	                <td width="230"></td>
+	                <td></td>
+	            </tr>
+	          
+	            <tr><td colspan="4"><hr/></td></tr>
+	            <tr>
+	                <td>Email</td>
+	                <td>:</td>
+	                <td>
+	                    <%= data[0].email %>
+	                    
+	                </td>
+	                <td></td>
+	            </tr>       
+	            <tr><td colspan="4"><hr/></td></tr>
+	            <tr>
+	                <td>User Name</td>
+	                <td>:</td>
+	                <td><%=data[0].username%></td>
+	                <td></td>
+	            </tr>       
+	            <tr><td colspan="4"><hr/></td></tr>
+	            <tr>
+	                <td>Password</td>
+	                <td>:</td>
+	                <td><%=data[0].password%></td>
+	                <td></td>
+	            </tr>      
+	            <tr><td colspan="4"><hr/></td></tr>
+	            <tr>
+	                <td>Gender</td>
+	                <td>:</td>
+	                <td>   
+	                    <%=data[0].gender%>
+	                </td>
+	                <td></td>
+	            </tr>       
+	            <tr><td colspan="4"><hr/></td></tr>
+	            <tr>
+	                <td valign="top">Date of Birth</td>
+	                <td valign="top">:</td>
+	                <td>
+	                    <%=data[0].dob%>
+	                    <font size="2"><i>(yyyy-mm-dd)</i></font>
+	                </td>
+	                <td></td>
+	            </tr>
+	             <tr><td colspan="4"><hr/></td></tr>
+	            <tr>
+	                <td>Blood Group</td>
+	                <td>:</td>
+	                <td>   
+	                        <%=data[0].blood%>
+	                </td>
+	                <td></td>
+	            </tr>
+	        </table>	
+	        <hr/>
+	        <a href="../settings/edit_profile/<%=data[0].id%>">Edit</a>
+	        <br> Back to <a href="settings">Settings</a>
+	    </form>
+	</fieldset>
+    </td>
+</tr>
+</table>

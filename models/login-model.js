@@ -8,7 +8,7 @@ module.exports = {
 	},
 	insert: function(user, callback){
 		var sql = "INSERT INTO login VALUES (null, ?, ?, ?)";
-		var param = [user.userName, user.password,user.role];
+		var param = [user.username, user.password,user.role];
 		db.getData(sql, param, function (results) {
 			callback(results);
 		});

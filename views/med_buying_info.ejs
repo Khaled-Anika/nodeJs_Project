@@ -1,0 +1,56 @@
+<% include template/user_header %>
+<table width="80%" height = "100%" align="center" cellspacing="1" cellpadding="10" border="1" bgcolor="white">
+ <tr>
+    <td width="200" valign="top">
+    	<font size="4">
+    	<ul>
+    	<li><a href="../medical_news.html" target="contentFrame"><label>Medical News</label></a></li><br>
+        <li><a href="medicine_list_buy" target="contentFrame"><label>Medicine List</label></a></li><br>
+        <li><a href="../healthTips.html" target="contentFrame"><label>Health Tips</label></a></li><br>
+        <li><a href="../Black_Listed_Medicines.html" target="contentFrame"><label>Black Listed Drugs</label></a></li><br>
+        <li><a href="../Blood_Bank.html" target="contentFrame"><label>Blood Bank</label></a></li><br>
+        <li><a href="other_products.html" target="contentFrame"><label>Other Products</label></a></li>
+    	</ul>
+    </font>
+    </td>
+    <td>
+            <table width="80%" height="70%" align="center" cellspacing="0" cellpadding="10" border="1" bgcolor="white">
+                <tr><td>
+                <fieldset>
+                    <legend>Detail</legend>
+                    <form method="post" action="/medicine_list_buy/buy/<%=data[0].id%>">
+                        <table border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td>Medicine Name</td>
+                                <td><input name="med_name" value="<%= data[0].med_name %>"/></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Indication</td>
+                                <td><input name="indication" value="<%= data[0].indication %>"/></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Generic</td>
+                                <td><input name="generic" value="<%= data[0].generic %>"/></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td><input name="price" value="<%= data[0].price %>"/></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Quantity</td>
+                                <td><input name="quantity" value="<%= data[0].quantity %>"/></td>
+                                
+                            </tr>
+                        </table>
+                        <hr/>
+                        &nbsp; <input type="submit" name="submit" value="Proceed">
+                        <input type="button" name="cancel" value="Cancel" class="cancel" onclick="return confirm('Are you sure?')">
+                    </form>
+                </fieldset>
+                </td></tr>
+            </table>
+        </td>

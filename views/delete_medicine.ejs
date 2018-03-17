@@ -1,0 +1,29 @@
+<% include template/admin_header %>
+<% include template/admin_interface %>
+<table width="80%" height="70%" align="center" cellspacing="0" cellpadding="10" border="1" bgcolor="white">
+    <tr><td>
+    <fieldset>
+    <legend><b>Are You Sure?</b></legend>
+    <form method="post">
+        <br/>
+        <table width="30%" cellpadding="2" cellspacing="0">
+    
+            <tr>
+                <td>Medicine Name :</td>
+                <td>
+                    <%= medicines.med_name %>  
+                </td>
+            </tr>
+            <tr>
+                <td>Id:</td>
+                <td><%= medicines.id %></td>      
+            </tr>                  
+        </table>
+        <hr/>
+        <input type="Submit" value="delete"/> &nbsp;
+        <a href="retrieve_medicine">Preview data</a>
+    </form>
+</fieldset>
+    </td></tr>
+</table>
+<% include template/footer %>

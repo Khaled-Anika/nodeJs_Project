@@ -1,23 +1,25 @@
 // Declaration
 var express = require('express');
 var router = express.Router();
+var expressSession = require('express-session');
 
 var asyncValidator = require('async-validator');
-var userRules = require.main.require('./validation-rules/user');
+//var userRules = require.main.require('./validation-rules/user');
 
 var regModel = require.main.require('./models/reg-model');
 var loginModel = require.main.require('./models/login-model');
 
 // Request Handler
-router.get('/index', function(req, res){
-	res.render('registration/index', {errs: []});
+router.get('/', function(req, res){
+	res.render('registration', {errs: []});
+	//res.render('registration', {errors: req.session.errors});
 });
 
-router.post('/index', function(req, res){
+router.post('/', function(req, res){
 	var user = {
 		name: req.body.name,
 		email: req.body.email,
-		userName: req.body.userName,
+		username: req.body.username,
 		password: req.body.password,
 		gender: req.body.gender,
 		dob: req.body.dob,
@@ -25,30 +27,39 @@ router.post('/index', function(req, res){
 	};
 	
 	var userLogin = {
-		userName: req.body.userName,
+		username: req.body.username,
 		password: req.body.password,
 		role: 'customer'
 	};
 
-	var validator = new asyncValidator(userRules.create);
-	validator.validate(user, function(errors, fields){
+	req.check('name','invalid name').isLength({min: 6});
+	req.check('email','invalid email address').isEmail();
+	req.check('password','password is invalid').isLength({min: 6});
+	req.check('confirmPassword',' invalid,should be equal to password').isLength({min: 6}).equals(req.body.password);
+	req.check('gender','gender is required').isLength({min: 4});
+	req.check('dob','dob is required').isLength({min: 5});
+	req.check('blood','blood group is required').isLength({min: 2});
+
+	var errors = req.validationErrors();
+	//var validator = new asyncValidator(userRules.create);
+	//var validator = new asyncValidator(create);
+	//validator.validate(user, function(errors, fields){
 		if(errors)
 		{
-			res.render('registration/index', {errs: errors});
+			res.render('registration', {errs: errors});
+			//req.session.errors = errors; 
 		}
 		else
 		{
-			validator.validate(userLogin, function(errors, fields){
-					regModel.insert(user, function(result){
-						//console.log("okay login");
-					loginModel.insert(userLogin, function(result){
-						//console.log("okay reg");
-						res.render('interface/index');
-					});
-					});
+			//validator.validate(userLogin, function(errors, fields){
+			regModel.insert(user, function(result){
+				loginModel.insert(userLogin, function(result){
+					res.render('home');
+				});
 			});
+			//});
 		}
-	});
+	//});
 });
 
 // Export (mandatory)

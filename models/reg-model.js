@@ -8,7 +8,7 @@ module.exports = {
 	},
 	insert: function(user, callback){
 		var sql = "INSERT INTO customer VALUES (null, ?, ?, ?, ?, ?, ?, ?)";
-		var param = [user.name, user.email, user.userName, user.password, user.gender, user.dob, user.blood];
+		var param = [user.name, user.email, user.username, user.password, user.gender, user.dob, user.blood];
 		db.getData(sql, param, function (results) {
 			callback(results);
 		});

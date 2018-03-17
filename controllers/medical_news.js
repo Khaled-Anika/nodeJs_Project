@@ -4,7 +4,7 @@ var router = express.Router();
 
 // Request Handler
 router.get('/', function(req, res){
-	res.render('home');
+	res.render('medical_news');
 });
 
 // Export (mandatory)

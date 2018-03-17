@@ -1,0 +1,55 @@
+<% include template/user_header %>
+<table width="80%" height = "100%" align="center" cellspacing="1" cellpadding="10" border="1" bgcolor="white">
+ <tr>
+    <td width="200" valign="top">
+	<font size="4">
+    	<ul>
+    	<li><a href="../medical_news.html" target="contentFrame"><label>Medical News</label></a></li><br>
+        <li><a href="medicine_list_buy" target="contentFrame"><label>Medicine List</label></a></li><br>
+        <li><a href="../healthTips.html" target="contentFrame"><label>Health Tips</label></a></li><br>
+        <li><a href="../Black_Listed_Medicines.html" target="contentFrame"><label>Black Listed Drugs</label></a></li><br>
+        <li><a href="../Blood_Bank.html" target="contentFrame"><label>Blood Bank</label></a></li><br>
+        <li><a href="other_products.html" target="contentFrame"><label>Other Products</label></a></li>
+    	</ul>
+    </font>
+    </td>
+    <td>
+    	<fieldset>
+	    <legend><b>Medicine List</b></legend>
+		<form method="post">
+			        <br/> 
+        <table width="90%" height="90%" border="1" cellspacing="0" cellpadding="5">
+	        <tr>
+	            <th>Id</th>
+	            <th>Name</th>
+	            <th>Indication</th>
+	            <th>Generic</th>
+	            <th>Price</th>
+	            <th>Quantity</th>
+	            <th colspan="4"></th>
+	        </tr>
+	        <% if(data.length){ 
+            for(var i = 0;i < data.length;i++) { %>                 
+            <tr>
+                <td><%=(i+1)%></td>
+                <td><%=data[i].med_name%></td>
+                <td><%=data[i].indication%></td>
+                <td><%=data[i].generic%></td>
+                <td><%=data[i].price%></td>
+                <td><%=data[i].quantity%></td>
+                <td><a href="../medicine_list_buy/buy/<%=data[i].id%>">Buy</a></td>
+            </tr>
+	        <% }
+            
+             }else{ %>
+                 <tr>
+                    <td colspan="3">No medicine</td>
+                 </tr>
+            <% } %>
+        </table>
+	   </form>
+	</fieldset>
+    </td>
+</tr>
+</table>
+<% include template/footer %>
